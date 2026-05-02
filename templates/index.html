@@ -3,201 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sulekha Silks | Premium Royalty</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Tenor+Sans&family=Crimson+Pro:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>Sulekha Silks | Royalty Reimagined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Tenor+Sans&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #D4AF37;
-            --deep-gold: #b8860b;
-            --burgundy: #600018;
-            --black: #1a1a1a;
-            --white: #ffffff;
-        }
-
-        /* Golden Animated Background */
-        body { 
-            margin: 0; padding: 0;
-            background: linear-gradient(-45deg, #fdf5e6, #fffaf0, #f5deb3, #faebd7);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            font-family: 'Crimson Pro', serif;
-            color: var(--black);
-            overflow-x: hidden;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Mega Navigation */
+        :root { --gold: #D4AF37; --burgundy: #600018; --ivory: #FCF9F2; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background: var(--ivory); font-family: 'Tenor Sans', sans-serif; overflow-x: hidden; }
+        
+        /* Premium Header */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
-            padding: 10px 5%; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--gold);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold);
+        }
+        .logo-box { display: flex; align-items: center; text-decoration: none; }
+        .logo-box img { height: 50px; border-radius: 5px; margin-right: 10px; }
+        
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #333; font-size: 0.8rem; letter-spacing: 1px; font-weight: bold; }
+
+        /* User Profile Badge */
+        .profile-badge {
+            background: var(--burgundy); color: white; padding: 5px 15px;
+            border-radius: 20px; font-size: 0.7rem; display: flex; align-items: center; gap: 8px;
         }
 
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 50px; width: auto; margin-right: 10px; border: 1px solid var(--gold); }
-        .logo-text { font-family: 'Cinzel'; font-weight: 900; color: var(--burgundy); font-size: 1.4rem; }
-
-        .menu-bar { display: flex; gap: 30px; align-items: center; }
-        .menu-bar a { 
-            text-decoration: none; color: var(--black); font-family: 'Tenor Sans'; 
-            font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
-            transition: 0.3s; position: relative;
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Mobile-ൽ മെനു ബട്ടൺ വേണം, ഇതിനായി പിന്നീട് JS ചേർക്കാം */
+            .logo-text { font-size: 1rem; }
         }
-        .menu-bar a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0;
-            height: 2px; background: var(--gold); transition: 0.3s;
-        }
-        .menu-bar a:hover::after { width: 100%; }
-
-        /* User Profile Style */
-        .user-profile {
-            display: flex; align-items: center; gap: 10px;
-            background: var(--gold); color: white; padding: 5px 15px;
-            border-radius: 20px; font-size: 0.8rem; cursor: pointer;
-        }
-
-        /* Hero */
-        .hero {
-            height: 80vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1610030469915-188611985724?q=80&w=1920') center/cover;
-            text-align: center; color: white; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        }
-        .hero h1 { font-family: 'Cinzel'; font-size: 4rem; letter-spacing: 15px; animation: fadeInDown 1.5s; }
-
-        /* Animated Login/Signup Card */
-        .auth-container {
-            max-width: 450px; margin: 100px auto; background: white;
-            padding: 40px; border-radius: 15px; box-shadow: 0 20px 50px rgba(184, 134, 11, 0.2);
-            border: 1px solid var(--gold); transform: translateY(0);
-            transition: 0.5s; animation: fadeInUp 1s;
-        }
-        .auth-container:hover { transform: translateY(-10px); }
-
-        .auth-box { display: none; }
-        .auth-box.active { display: block; animation: fadeIn 0.5s; }
-
-        input {
-            width: 100%; padding: 15px; margin-bottom: 15px;
-            border: 1px solid #ddd; border-radius: 5px; outline: none;
-            background: #fffcf5;
-        }
-        input:focus { border-color: var(--gold); box-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
-
-        .gold-btn {
-            width: 100%; padding: 15px; background: linear-gradient(to right, var(--gold), var(--deep-gold));
-            color: white; border: none; border-radius: 5px; cursor: pointer;
-            font-family: 'Tenor Sans'; letter-spacing: 2px; font-weight: bold;
-        }
-
-        /* Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 5%; }
-        .card { background: white; border: 1px solid var(--gold); overflow: hidden; transition: 0.3s; }
-        .card:hover { transform: scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 450px; object-fit: cover; }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        footer { background: var(--black); color: var(--gold); padding: 50px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
-
     <nav>
-        <a href="/" class="logo-container">
-            <img src="{{ url_for('static', filename='sulekha.jpg') }}" class="logo-img" onerror="this.src='https://via.placeholder.com/50x50?text=S'">
-            <div class="logo-text">SULEKHA</div>
+        <a href="/" class="logo-box">
+            <img src="{{ url_for('static', filename='sulekha.jpg') }}" alt="Logo">
+            <span style="font-family: 'Cinzel'; color: var(--burgundy); font-weight: 900;">SULEKHA SILKS</span>
         </a>
-        
-        <div class="menu-bar">
-            <a href="#shop">COLLECTION</a>
-            <a href="#gallery">GALLERY</a>
-            
+        <div class="nav-links">
+            <a href="/">HOME</a>
+            <a href="/shop">COLLECTION</a>
+            <a href="/gallery">GALLERY</a>
+            <a href="/about">ABOUT US</a>
             {% if session.user_name %}
-                <div class="user-profile">
-                    <span>👑 {{ session.user_name }}</span>
-                    <a href="/logout" style="color: white; font-size: 10px; margin-left: 10px;">LOGOUT</a>
-                </div>
+                <a href="/profile" class="profile-badge">👑 {{ session.user_name }}</a>
+                <a href="/logout" style="color: red;">LOGOUT</a>
             {% else %}
-                <a href="#auth-section" style="background: var(--burgundy); color: white; padding: 8px 15px; border-radius: 5px;">LOGIN</a>
+                <a href="/login" style="background: var(--gold); color: white; padding: 8px 15px; border-radius: 5px;">LOGIN</a>
             {% endif %}
         </div>
     </nav>
 
-    <section class="hero">
-        <div>
-            <h1 style="color: white;">SULEKHA SILKS</h1>
-            <p style="letter-spacing: 5px;">A Golden Legacy of Elegance</p>
-        </div>
-    </section>
+    {% block content %}{% endblock %}
 
-    <div id="shop">
-        <h2 style="text-align: center; font-family: 'Cinzel'; margin-top: 50px; color: var(--burgundy);">The Signature Weaves</h2>
-        <div class="product-grid">
-            <div class="card">
-                <img src="https://images.pexels.com/photos/15712165/pexels-photo-15712165.jpeg" alt="Saree">
-                <div style="padding: 20px; text-align: center;">
-                    <h3>Bridal Gold Silk</h3>
-                    <p style="color: var(--gold);">₹19,500</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.pexels.com/photos/14624458/pexels-photo-14624458.jpeg" alt="Saree">
-                <div style="padding: 20px; text-align: center;">
-                    <h3>Royal Temple Kasavu</h3>
-                    <p style="color: var(--gold);">₹8,200</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {% if not session.user_name %}
-    <section id="auth-section">
-        <div class="auth-container">
-            <div id="login-box" class="auth-box active">
-                <h2 style="font-family: 'Cinzel'; color: var(--burgundy); text-align: center;">Member Login</h2>
-                <form action="/login" method="POST" style="margin-top: 20px;">
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <button type="submit" class="gold-btn">SIGN IN</button>
-                </form>
-                <p style="text-align: center; margin-top: 20px; font-size: 0.8rem;">
-                    Don't have an account? <span onclick="toggleAuth('signup')" style="color: var(--gold); cursor: pointer;">Join Now</span>
-                </p>
-            </div>
-
-            <div id="signup-box" class="auth-box">
-                <h2 style="font-family: 'Cinzel'; color: var(--burgundy); text-align: center;">Create Account</h2>
-                <form action="/signup" method="POST" style="margin-top: 20px;">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <button type="submit" class="gold-btn">REGISTER</button>
-                </form>
-                <p style="text-align: center; margin-top: 20px; font-size: 0.8rem;">
-                    Already a member? <span onclick="toggleAuth('login')" style="color: var(--gold); cursor: pointer;">Sign In</span>
-                </p>
-            </div>
-        </div>
-    </section>
-    {% endif %}
-
-    <footer>
+    <footer style="background: #1a1a1a; color: var(--gold); padding: 50px; text-align: center; margin-top: 50px;">
         <h2 style="font-family: 'Cinzel';">SULEKHA SILKS</h2>
-        <p>© 2026 Crafted with Gold & Silk</p>
+        <p>Legacy of Elegance since 1978</p>
     </footer>
-
-    <script>
-        function toggleAuth(type) {
-            document.getElementById('login-box').classList.toggle('active', type === 'login');
-            document.getElementById('signup-box').classList.toggle('active', type === 'signup');
-        }
-    </script>
 </body>
 </html>

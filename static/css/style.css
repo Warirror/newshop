@@ -1,0 +1,30 @@
+:root {
+    --gold: #D4AF37;
+    --burgundy: #800020;
+    --ivory: #FDF5E6;
+    --black: #1a1a1a;
+}
+
+body { margin: 0; background: var(--ivory); font-family: 'Tenor Sans', sans-serif; }
+
+.mega-nav { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.top-bar { background: var(--burgundy); color: white; text-align: center; font-size: 0.7rem; padding: 10px; letter-spacing: 2px; }
+.nav-main { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; }
+.logo { font-family: 'Cinzel'; font-size: 2rem; text-decoration: none; color: var(--black); font-weight: 900; }
+.logo span { color: var(--gold); }
+.links a { margin-left: 30px; text-decoration: none; color: var(--black); font-size: 0.8rem; letter-spacing: 1px; font-weight: bold; }
+
+/* Hero Slider */
+.hero-slider { height: 90vh; position: relative; overflow: hidden; }
+.slide { width: 100%; height: 100%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+.overlay { text-align: center; color: white; background: rgba(0,0,0,0.3); padding: 50px; }
+.overlay h1 { font-family: 'Cinzel'; font-size: 5rem; margin: 0; }
+.gold-btn { background: var(--gold); color: white; padding: 15px 40px; text-decoration: none; display: inline-block; margin-top: 20px; }
+
+/* Shopping Grid */
+.model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 5%; }
+.model-card img { width: 100%; height: 600px; object-fit: cover; transition: 0.5s; }
+.model-card:hover img { transform: scale(1.05); }
+
+/* Ad Section */
+.ad-banner { background: var(--burgundy); color: white; padding: 60px; text-align: center; margin: 50px 0; }

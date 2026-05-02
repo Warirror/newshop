@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .auth-wrapper {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        /* Golden Animated Background */
+        background: linear-gradient(-45deg, #fdf5e6, #fffaf0, #f5deb3, #faebd7);
+        background-size: 400% 400%;
+        animation: gradientBG 10s ease infinite;
+    }
+
+    .auth-card {
+        background: white;
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(184, 134, 11, 0.2);
+        border: 1px solid var(--gold);
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .auth-card h2 {
+        font-family: 'Cinzel', serif;
+        color: var(--burgundy);
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    .auth-card p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        background: #fffcf5;
+        transition: 0.3s;
+    }
+
+    .input-group input:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(to right, var(--gold), var(--deep-gold));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Tenor Sans', sans-serif;
+        font-weight: bold;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: 0.4s;
+    }
+
+    .auth-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+    }
+
+    .toggle-link {
+        margin-top: 25px;
+        font-size: 0.85rem;
+    }
+
+    .toggle-link span {
+        color: var(--gold);
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden { display: none; }
+</style>
+
+<div class="auth-wrapper">
+    <div id="login-form" class="auth-card">
+        <h2>Royal Login</h2>
+        <p>Access your premium boutique account</p>
+        
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="auth-btn">SIGN IN</button>
+        </form>
+
+        <div class="toggle-link">
+            New to Sulekha? <span onclick="showForm('signup')">Create Account</span>
+        </div>
+    </div>
+
+    <div id="signup-form" class="auth-card hidden">
+        <h2>Join the Legacy</h2>
+        <p>Register for exclusive member benefits</p>
+        
+        <form action="/signup" method="POST">
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Create Password" required>
+            </div>
+            <button type="submit" class="auth-btn">REGISTER NOW</button>
+        </form>
+
+        <div class="toggle-link">
+            Already a member? <span onclick="showForm('login')">Login Here</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showForm(formType) {
+        const login = document.getElementById('login-form');
+        const signup = document.getElementById('signup-form');
+        
+        if(formType === 'signup') {
+            login.classList.add('hidden');
+            signup.classList.remove('hidden');
+        } else {
+            signup.classList.add('hidden');
+            login.classList.remove('hidden');
+        }
+    }
+</script>
+{% endblock %}
